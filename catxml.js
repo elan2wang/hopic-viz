@@ -12,11 +12,11 @@ function get_xml(path) {
 
     
     if (request.status === 200) {
-	//console.log("read " + path);
-	//console.log(request.responseText);
-	return request.responseXML;
+    //console.log("read " + path);
+    //console.log(request.responseText);
+    return request.responseXML;
     } else {
-	alert("ERROR: Couldn't retrieve xml at " + path + "; error status: " + request.status);
+    alert("ERROR: Couldn't retrieve xml at " + path + "; error status: " + request.status);
     }
     
 }
@@ -34,14 +34,14 @@ function number_to_name(page_number, comic_settings) {
     var num_str = page_number.toString();
     var num_length = num_str.length;
     while (num_length < comic_settings.pad_to) {
-	num_str = "0" + num_str;
-	num_length += 1;
+    num_str = "0" + num_str;
+    num_length += 1;
     }
     var page_name = num_str;
     if (comic_settings.path_creation == "prepend") {
-	page_name = comic_settings.basename + page_name;
+    page_name = comic_settings.basename + page_name;
     } else if (comic_settings.path_creation == "append") {
-	page_name = page_name + comic_settings.basename;
+    page_name = page_name + comic_settings.basename;
     }
     return page_name
 }
@@ -100,9 +100,9 @@ function Panel(panel_xml) {
     this.vertices = [];
     var v_elms = panel_xml.getElementsByTagName("vertex");
     for (var i = 0; i < v_elms.length; i++) {
-	x = parseFloat(v_elms[i].attributes.getNamedItem("x").nodeValue);
-	y = parseFloat(v_elms[i].attributes.getNamedItem("y").nodeValue);
-	this.vertices[i] = new Vertex(x, y);
+    x = parseFloat(v_elms[i].attributes.getNamedItem("x").nodeValue);
+    y = parseFloat(v_elms[i].attributes.getNamedItem("y").nodeValue);
+    this.vertices[i] = new Vertex(x, y);
     }
 
     this.char_count = parseInt(get_attribute(panel_xml, "charcount", 0));
@@ -113,30 +113,30 @@ function Panel(panel_xml) {
     this.tags = [];
     var tag_elms = panel_xml.getElementsByTagName("tag");
     for (var i = 0; i < tag_elms.length; i++) {
-	this.tags[i] = new Tag(tag_elms[i]);
+    this.tags[i] = new Tag(tag_elms[i]);
     }
 
     // Characters
     this.characters = [];
     var char_elm = panel_xml.getElementsByTagName("characters")[0];
     if (char_elm != undefined) {
-	var char_str = char_elm.textContent;
-	//console.log("chars: " + char_str);
-	//var b = false;
-	if (char_str) {
-	    //console.log("if chars: " + b);
-	    //console.log("length: " + char_str.length);
-	    var char_list = char_str.split(",");
-	    for (var i = 0; i < char_list.length; i++) {
-		var c = parseInt(char_list[i]);
-		if (c != NaN) {
-		    this.characters[i] = c;
-		    //console.log("char " + i + ": " + this.characters[i]);
-		} else {
-		    break;
-		}
-	    } // for
-	} // if
+    var char_str = char_elm.textContent;
+    //console.log("chars: " + char_str);
+    //var b = false;
+    if (char_str) {
+        //console.log("if chars: " + b);
+        //console.log("length: " + char_str.length);
+        var char_list = char_str.split(",");
+        for (var i = 0; i < char_list.length; i++) {
+        var c = parseInt(char_list[i]);
+        if (c != NaN) {
+            this.characters[i] = c;
+            //console.log("char " + i + ": " + this.characters[i]);
+        } else {
+            break;
+        }
+        } // for
+    } // if
     } // if
     //console.log(this);
 }
@@ -150,7 +150,7 @@ function ComicPage(page_path) {
     this.panels = [];
     var panel_elements = page_xml.getElementsByTagName("panel");
     for (var i = 0; i < panel_elements.length; i++) {
-	this.panels[i] = new Panel(panel_elements[i]);
+    this.panels[i] = new Panel(panel_elements[i]);
     }
 
     // Transitions
@@ -158,7 +158,7 @@ function ComicPage(page_path) {
     var trans_elements = page_xml.getElementsByTagName("transition");
     console.log(trans_elements);
     for (var i = 0; i < trans_elements.length; i++) {
-	this.transitions[i] = new Transition(trans_elements[i]);
+    this.transitions[i] = new Transition(trans_elements[i]);
     }
 
     // Sort the transitions in ascending order according to the 
@@ -181,74 +181,74 @@ function ComicBook(name, folder_path, from_page, to_page) {
     // Pages
     this.pages = [];
     for (var i = from_page; i <= to_page; i++) {
-	console.log("Page " + i);
-	page_name = number_to_name(i, this.options);
-	page_path = folder_path + "/" + page_name + ".xml";
-	this.pages[i - from_page] = new ComicPage(page_path);
+    console.log("Page " + i);
+    page_name = number_to_name(i, this.options);
+    page_path = folder_path + "/" + page_name + ".xml";
+    this.pages[i - from_page] = new ComicPage(page_path);
     }
 
     this.count_transitions = function(types) {
-	var previous = -1;
-	//console.log(name + ", types.length = " + types.length);
-	this.transition_matrix = [];
-	for (var i = 0; i < types.length; i++) {
-	    this.transition_matrix[i] = [];
-	    for (var j = 0; j < types.length; j++) {
-		this.transition_matrix[i][j] = 0;
-	    }
-	}
-	// types.length rows and types.length columns
+    var previous = -1;
+    //console.log(name + ", types.length = " + types.length);
+    this.transition_matrix = [];
+    for (var i = 0; i < types.length; i++) {
+        this.transition_matrix[i] = [];
+        for (var j = 0; j < types.length; j++) {
+        this.transition_matrix[i][j] = 0;
+        }
+    }
+    // types.length rows and types.length columns
 
-	for (var i = 0; i < this.pages.length; i++) {
-	    //console.log(this.pages[i].page_path);
-	    for (var j = 0; j < this.pages[i].transitions.length; j++) {
-		var current = this.pages[i].transitions[j].type;
-		if (previous == -1) {
-		    previous = current;
-		    continue;
-		}
-		this.transition_matrix[previous][current] += 1;
-		previous = current;
-	    } // for
-	} // for
+    for (var i = 0; i < this.pages.length; i++) {
+        //console.log(this.pages[i].page_path);
+        for (var j = 0; j < this.pages[i].transitions.length; j++) {
+        var current = this.pages[i].transitions[j].type;
+        if (previous == -1) {
+            previous = current;
+            continue;
+        }
+        this.transition_matrix[previous][current] += 1;
+        previous = current;
+        } // for
+    } // for
 
-	// Remove the transition types that occur 0 times
-	this.index_id_map = [];
-	this.id_index_map = [];
-	var deletions = 0;
-	for (var i = 0; i < this.transition_matrix.length; i++) {
-	    var sum = 0;
-	    for (var j = 0; j < this.transition_matrix[i].length; j++) {
-		sum += this.transition_matrix[i][j];
-	    }
-	    if (sum == 0) {
-		this.transition_matrix.splice(i, 1);
-		for (var k = 0; k < this.transition_matrix.length; k++) {
-		    this.transition_matrix[k].splice(i, 1);
-		}
-		//console.log("Deleted row " + i);
-		this.id_index_map[i+deletions] = -1;
-		//console.log("id_index_map " + (i+deletions) + "= " + -1);
-		i--;
-		deletions += 1;
-	    } else {
-		this.index_id_map[i] = i + deletions;
-		this.id_index_map[i+deletions] = i;
-		//console.log("id_index_map " + (i+deletions) + "= " + i);
+    // Remove the transition types that occur 0 times
+    this.index_id_map = [];
+    this.id_index_map = [];
+    var deletions = 0;
+    for (var i = 0; i < this.transition_matrix.length; i++) {
+        var sum = 0;
+        for (var j = 0; j < this.transition_matrix[i].length; j++) {
+        sum += this.transition_matrix[i][j];
+        }
+        if (sum == 0) {
+        this.transition_matrix.splice(i, 1);
+        for (var k = 0; k < this.transition_matrix.length; k++) {
+            this.transition_matrix[k].splice(i, 1);
+        }
+        //console.log("Deleted row " + i);
+        this.id_index_map[i+deletions] = -1;
+        //console.log("id_index_map " + (i+deletions) + "= " + -1);
+        i--;
+        deletions += 1;
+        } else {
+        this.index_id_map[i] = i + deletions;
+        this.id_index_map[i+deletions] = i;
+        //console.log("id_index_map " + (i+deletions) + "= " + i);
 
-	    }
-	} // for
+        }
+    } // for
 
-	/*
-	for (var i = 0; i < this.transition_matrix.length; i++) {
-	    for (var j = 0; j < this.transition_matrix[i].length; j++) {
-		if (this.id_index_map[j] == -1) {
-		    this.transition_matrix[i].splice(j, 1);
-		    j--;
-		}
-	    }
-	}
-	*/
+    /*
+    for (var i = 0; i < this.transition_matrix.length; i++) {
+        for (var j = 0; j < this.transition_matrix[i].length; j++) {
+        if (this.id_index_map[j] == -1) {
+            this.transition_matrix[i].splice(j, 1);
+            j--;
+        }
+        }
+    }
+    */
     } // count_transitions
 
     
@@ -257,7 +257,7 @@ function ComicBook(name, folder_path, from_page, to_page) {
     var char_elms = chars_xml.getElementsByTagName("character");
     this.characters = [];
     for (var i = 0; i < char_elms.length; i++) {
-	this.characters[i] = new Character(char_elms[i]);
+    this.characters[i] = new Character(char_elms[i]);
     }
     
 } // ComicBook
@@ -276,10 +276,10 @@ function read_transitions() {
     //console.log(trans_elements);
     var transitions = [];
     for (var i = 0; i < trans_elements.length; i++) {
-	name = trans_elements[i].attributes.getNamedItem("name").nodeValue;
-	id_str = trans_elements[i].attributes.getNamedItem("id").nodeValue;
-	color = trans_elements[i].attributes.getNamedItem("color").nodeValue;
-	transitions[i] = new TransitionType(name, id_str, color);
+    name = trans_elements[i].attributes.getNamedItem("name").nodeValue;
+    id_str = trans_elements[i].attributes.getNamedItem("id").nodeValue;
+    color = trans_elements[i].attributes.getNamedItem("color").nodeValue;
+    transitions[i] = new TransitionType(name, id_str, color);
     }
     return transitions
 }
@@ -290,7 +290,7 @@ function read_tag_defs() {
     var tag_elms = tags_xml.getElementsByTagName("tag");
     var tag_defs = [];
     for (var i = 0; i < tag_elms.length; i++) {
-	tag_defs[i] = new TagDef(tag_elms[i]);
+    tag_defs[i] = new TagDef(tag_elms[i]);
     }
     return tag_defs;
 }
@@ -301,9 +301,9 @@ function read_comics(names, from_page, to_page) {
     //var names = [ "sandman1", "luckyluke6", "drmcninja25" ];
     var comics = [];
     for (var i = 0; i < names.length; i++) {
-	comics[i] = new ComicBook(names[i], comics_dir + names[i], from_page[i], to_page[i]);
-	//comics[i].count_transitions(transition_types);
-	//console.log(comics[i].transition_matrix);
+    comics[i] = new ComicBook(names[i], comics_dir + names[i], from_page[i], to_page[i]);
+    //comics[i].count_transitions(transition_types);
+    //console.log(comics[i].transition_matrix);
     }
     return comics
 }
@@ -313,7 +313,7 @@ function read_chars(xml) {
     var char_elms = xml.getElementsByTagName("character");
     characters = [];
     for (var i = 0; i < char_elms.length; i++) {
-	characters[i] = new Character(char_elms[i]);
+    characters[i] = new Character(char_elms[i]);
     }
     return characters
 }
