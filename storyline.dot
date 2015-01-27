@@ -1,18 +1,4 @@
-<html>
-	<head>
-		<style>
-			@import url('narrative.css');
-		</style>
-		<script src="./lib/d3.min.js" charset="utf-8"></script>
-		<script src="./lib/graphlib-dot.min.js" charset="utf-8"></script>
-        <script src="catxml.js" charset="utf-8"></script>
-        <script src="position.js" charset="utf-8"></script>
-        <script src="narrative2.js" charset="utf-8"></script>
-	</head>
-	<body>
-		<form>
-			<label for="inputGraph">Graphviz Definition</label>
-			<textarea id="inputGraph" rows="10" cols="120" style="display: block; font-size: 8">digraph storyline {
+digraph storyline {
     graph [bb="0,0,1402,222",
         nodesep=0.1,
         rankdir=LR,
@@ -888,11 +874,3 @@
             pos="939.84,133.79 958.21,131.86 983.78,127.2 1006,122 1014.5,120.01 1023.9,117.37 1031.4,114.38"];
     }
 }
-			</textarea>
-			<input type="button" id="graphLink" onclick="draw_chart('./')" value="generate"/>
-		</form>
-
-		<p id="chart"></p>
-
-	</body>
-</html>

@@ -43,8 +43,8 @@ function _SceneNode(id, chars, start, duration) {
     this.in_links  = [];           // [array[int]]
     this.out_links = [];           // [array[int]]
 
-    this.char_node    = false;     // [Boolean]
-
+    this.char_node = false;        // [Boolean]
+    this.char_id   = -1;       
     // methods
     this.has_char  = function(id) {
         for (var i = 0; i < this.chars.length; i++) {
@@ -69,6 +69,7 @@ var curvature = 0.5;
  * @return {Path}   SVG path
  */
 function get_path (link) {
+    console.log(link);
     var x0 = link.x0;
     var y0 = link.y0;
     var x1 = link.x1;
@@ -148,6 +149,7 @@ function add_char_scenes (chars, scenes, links) {
         s.height = link_width;
         s.chars[s.chars.length] = chars[i].id;
         s.id = scenes.length;
+        s.char_id = chars[i].id;
 
         if (chars[i].first_scence != null) {
             var link = new _Link(s, chars[i].first_scence, chars[i].id);
@@ -170,77 +172,6 @@ var link_gap = 2;
 // The character's name appears before its first
 // scene's x value by this many pixels
 var name_shift = 10
-
-function calc_node_positions(chars, scenes, char_scenes, panel_width, panel_shift) {
-    scenes.forEach(function(scene) {
-        if (!scene.char_node) {
-            // set height & width
-            scene.height = Math.max(
-                0,scene.chars.length*link_width+(scene.chars.length-1)*link_gap
-            );
-            scene.width = panel_width*4;
-
-            // set x & y
-            scene.x = scene.start*panel_width;
-
-            // here is the core part
-            // how to decide the vertical shift distance of the scene
-            var sum = 0;
-            var den = 0;
-            for (var i = 0; i < scene.chars.length; i++) {
-                sum += parseInt(scene.chars[i])*30;
-                den += 1;
-            }
-
-            scene.y = sum/den - scene.height/2.0;
-        }
-
-        // control character node positions
-        // usually they appear right side of the chart
-        char_scenes.forEach(function(scene) {
-            if (scene.first_scence != null) {
-                scene.x = panel_shift*panel_width - name_shift;
-            }
-        });
-    });
-}
-
-/**
- * calculate link position
- * node positions have to be set before this is called
- * 
- * @param  {Array}
- * @param  {Array}
- * 
- */
-function calc_link_positions(chars, scenes) {
-    scenes.forEach(function(scene) {
-        scene.in_links.sort(function(a, b) { return a.char_id - b.char_id; });
-        scene.out_links.sort(function(a, b) { return a.char_id - b.char_id; });
-
-        for (var i = 0; i < scene.out_links.length; i++) {
-            scene.out_links[i].y0 = -1;
-        }
-
-        var j = 0;
-        for (var i = 0; i < scene.in_links.length; i++) {
-            scene.in_links[i].y1 = scene.y + i*(link_width+link_gap) + link_width/2.0;
-            scene.in_links[i].x1 = scene.x + 0.5*scene.width;
-
-            if (j < scene.out_links.length && scene.out_links[j].char_id == scene.in_links[i].char_id) {
-                scene.out_links[j].y0 = scene.in_links[i].y1;
-                j += 1;
-            }
-        }
-
-        for (var i = 0; i < scene.out_links.length; i++) {
-            if (scene.out_links[i].y0 == -1) {
-                scene.out_links[i].y0 = scene.y + i*(link_width+link_gap) + link_width/2.0;
-            }
-            scene.out_links[i].x0 = scene.x + 0.5*scene.width;
-        }
-    });
-}
 
 function draw_links (links, char_map, svg) {
     var link = svg.append('g').selectAll('.link').data(links)
@@ -267,8 +198,24 @@ function draw_links (links, char_map, svg) {
     }
 }
 
-function draw_nodes (scenes, svg) {
-    
+function draw_nodes(scenes, svg) {
+    var node = svg.append("g").selectAll(".node").data(scenes);
+
+    node.enter()
+    .append("g")
+        .attr("class", "node")
+        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+        .attr("scene_id", function(d) { return d.id; });
+
+    node
+    .append("rect")
+        .attr("width", function(d) { return d.width; })
+        .attr("height", function(d) { return d.height; })
+        .attr("class", "scene")
+        .attr("rx", 20)
+        .attr("ry", 10)
+    .append("title")
+        .text(function(d) { return d.name; });
 }
 
 // Longest name in pixels to make space at the beginning 
@@ -334,18 +281,14 @@ function draw_chart (file_path) {
             var char_scenes = add_char_scenes(chars, scenes, links);
 
             // STEP 6.
-            calc_node_positions(chars, scenes, char_scenes, panel_width, panel_shift);
-            calc_link_positions(chars, scenes);
+            get_scene_position_from_dot(scenes, char_scenes, panel_width, panel_shift);
+            calc_link_positions(chars, scenes, char_scenes);
 
             // STEP 7. 
             draw_links(links, char_map, svg);
+            draw_nodes(scenes, svg);
         });
-    });
-
-    
+    });   
 }
-
-draw_chart('./');
-
 
 
