@@ -33,6 +33,7 @@ function _SceneNode(id, chars, start, duration) {
     this.chars     = chars;        // [array[int]]
     this.start     = start;        // [int]
     this.duration  = duration;     // [int]
+    this.name      = "scene_"+id;
 
     // position attributite
     this.x         = 0;            // [float]  determined later
@@ -149,6 +150,7 @@ function add_char_scenes (chars, scenes, links) {
         s.height = link_width;
         s.chars[s.chars.length] = chars[i].id;
         s.id = scenes.length;
+        s.name = "scene_" + s.id;
         s.char_id = chars[i].id;
 
         if (chars[i].first_scence != null) {
@@ -178,9 +180,9 @@ function draw_links (links, char_map, svg) {
         .enter().append('path')
             .attr('class', 'link')
             .attr('d', function(d) { return get_path(d); })
-            .attr('from', function(d) { return char_map[d.char_id].name + "_" + d.from.id; })
-            .attr('to', function(d) { return char_map[d.char_id].name + "_" + d.to.id; })
-            .attr('charid', function(d) { return char_map[d.char_id].name + "_" + d.char_id; })
+            .attr('from', function(d) { return d.from.name; })
+            .attr('to', function(d) { return d.to.name; })
+            .attr('charid', function(d) { return d.char_id; })
         .style('stroke', function(d) { return d3.rgb(color(d.char_id)).darker(0.5).toString(); })
         .style('stroke-width', link_width)
         .style('stroke-linecap', 'round')
@@ -189,33 +191,48 @@ function draw_links (links, char_map, svg) {
 
     function mouseover_cb(d) {
         d3.selectAll("[charid=\"" + char_map[d.char_id].name + "_" + d.char_id + "\"]")
-            .style("stroke-opacity", "1");
+            .style("stroke-opacity", "0.6");
     }
     
     function mouseout_cb(d) {
         d3.selectAll("[charid=\"" + char_map[d.char_id].name + "_" + d.char_id + "\"]")
-            .style("stroke-opacity", "0.6");
+            .style("stroke-opacity", "1");
     }
 }
 
-function draw_nodes(scenes, svg) {
+function draw_nodes(scenes, svg, chart_width, chart_height) {
+    var margin = 2;
     var node = svg.append("g").selectAll(".node").data(scenes);
 
     node.enter()
     .append("g")
         .attr("class", "node")
-        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-        .attr("scene_id", function(d) { return d.id; });
+        .attr("transform", function(d) { return "translate(" + (d.x-margin) + "," + (d.y) + ")"; })
+        .attr("scene_id", function(d) { return d.id; })
+    .call(d3.behavior.drag()
+        .origin(function(d) { return d; })
+        .on("dragstart", function() { this.parentNode.appendChild(this); })
+        .on("drag", dragmove));
 
     node
     .append("rect")
-        .attr("width", function(d) { return d.width; })
+        .attr("width", function(d) { return d.width+margin*2; })
         .attr("height", function(d) { return d.height; })
         .attr("class", "scene")
-        .attr("rx", 20)
-        .attr("ry", 10)
+        .attr("rx", 3)
+        .attr("ry", 3)
     .append("title")
         .text(function(d) { return d.name; });
+
+    function dragmove (d) {
+        var newy = Math.max(0, Math.min(chart_height - d.height, d3.event.y));
+        var ydisp = d.y - newy;
+
+        d3.select(this).attr("transform", "translate(" 
+                     + (d.x = Math.max(0, Math.min(chart_width - d.width, d3.event.x))) + "," 
+                     + (d.y = Math.max(0, Math.min(chart_height - d.height, d3.event.y))) + ")");
+        reposition_node_links(d.name, d.x+margin, d.width, ydisp, svg);
+    }
 }
 
 // Longest name in pixels to make space at the beginning 
@@ -286,7 +303,7 @@ function draw_chart (file_path) {
 
             // STEP 7. 
             draw_links(links, char_map, svg);
-            draw_nodes(scenes, svg);
+            draw_nodes(scenes, svg, width, height);
         });
     });   
 }
