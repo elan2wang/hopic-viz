@@ -1,6 +1,96 @@
 {
     "panels": 409, 
-    "scenes": [
+    "characters": [
+        {
+            "id": 0,
+            "name": "Lucky Luke"
+        },
+        {
+            "id": 1,
+            "name": "Ma Dalton"
+        },
+        {
+            "id": 2,
+            "name": "Jolly Jumper"
+        },
+        {
+            "id": 3,
+            "name": "Rantanplan"
+        },
+        {
+            "id": 4,
+            "name": "Joe Dalton"
+        },
+        {
+            "id": 5,
+            "name": "William Dalton"
+        },
+        {
+            "id": 6,
+            "name": "Jack Dalton"
+        },
+        {
+            "id": 7,
+            "name": "Averell Dalton"
+        },
+        {
+            "id": 8,
+            "name": "Ma Dalton's Cat"
+        },
+        {
+            "id": 15,
+            "name": "Carriage driver"
+        },
+        {
+            "id": 16,
+            "name": "Sheriff"
+        },
+        {
+            "id": 17,
+            "name": "Butcher"
+        },
+        {
+            "id": 18,
+            "name": "Prison warden"
+        },
+        {
+            "id": 19,
+            "name": "Prison guards"
+        },
+        {
+            "id": 20,
+            "name": "Prisoners"
+        },
+        {
+            "id": 21,
+            "name": "Robbers"
+        },
+        {
+            "id": 22,
+            "name": "Vet"
+        },
+        {
+            "id": 23,
+            "name": "Banker"
+        },
+        {
+            "id": 24,
+            "name": "Bank owner"
+        },
+        {
+            "id": 25,
+            "name": "Sheriff 2"
+        },
+        {
+            "id": 26,
+            "name": "Farmer"
+        },
+        {
+            "id": 27,
+            "name": "Burley"
+        }
+    ],
+    "sessions": [
         {
             "duration": 5, 
             "start": 0, 

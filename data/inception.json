@@ -1,0 +1,1266 @@
+{
+    "panels": 500,
+    "characters": [
+        {
+            "id": 9,
+            "name": "FISCHER"
+        },
+        {
+            "id": 7,
+            "name": "EAMES"
+        },
+        {
+            "id": 8,
+            "name": "YUSUF"
+        },
+        {
+            "id": 0,
+            "name": "SAITO"
+        },
+        {
+            "id": 2,
+            "name": "ARTHUR"
+        },
+        {
+            "id": 3,
+            "name": "MAL"
+        },
+        {
+            "id": 5,
+            "name": "ASIAN"
+        },
+        {
+            "id": 1,
+            "name": "COBB"
+        },
+        {
+            "id": 4,
+            "name": "ARCH"
+        },
+        {
+            "id": 6,
+            "name": "ARIADNE"
+        }
+    ],
+    "sessions": [
+        {
+            "duration": 7,
+            "start": 0,
+            "chars": [
+                0,
+                1,
+                2
+            ],
+            "id": 0,
+            "location": 1
+        },
+        {
+            "duration": 14,
+            "start": 7,
+            "chars": [
+                0
+            ],
+            "id": 1,
+            "location": 1
+        },
+        {
+            "duration": 7,
+            "start": 7,
+            "chars": [
+                1,
+                2
+            ],
+            "id": 2,
+            "location": 1
+        },
+        {
+            "duration": 7,
+            "start": 7,
+            "chars": [
+                3
+            ],
+            "id": 3,
+            "location": 1
+        },
+        {
+            "duration": 7,
+            "start": 14,
+            "chars": [
+                1,
+                3
+            ],
+            "id": 4,
+            "location": 1
+        },
+        {
+            "duration": 14,
+            "start": 14,
+            "chars": [
+                2
+            ],
+            "id": 5,
+            "location": 1
+        },
+        {
+            "duration": 7,
+            "start": 21,
+            "chars": [
+                0,
+                3
+            ],
+            "id": 6,
+            "location": 1
+        },
+        {
+            "duration": 13,
+            "start": 21,
+            "chars": [
+                1
+            ],
+            "id": 7,
+            "location": 1
+        },
+        {
+            "duration": 6,
+            "start": 28,
+            "chars": [
+                0,
+                2,
+                3
+            ],
+            "id": 8,
+            "location": 1
+        },
+        {
+            "duration": 7,
+            "start": 34,
+            "chars": [
+                0,
+                1,
+                2,
+                3
+            ],
+            "id": 9,
+            "location": 1
+        },
+        {
+            "duration": 7,
+            "start": 41,
+            "chars": [
+                0,
+                1,
+                3
+            ],
+            "id": 10,
+            "location": 1
+        },
+        {
+            "duration": 21,
+            "start": 41,
+            "chars": [
+                2,
+                4
+            ],
+            "id": 11,
+            "location": 2
+        },
+        {
+            "duration": 7,
+            "start": 48,
+            "chars": [
+                0,
+                3
+            ],
+            "id": 12,
+            "location": 1
+        },
+        {
+            "duration": 14,
+            "start": 48,
+            "chars": [
+                1
+            ],
+            "id": 13,
+            "location": 2
+        },
+        {
+            "duration": 7,
+            "start": 55,
+            "chars": [
+                0
+            ],
+            "id": 14,
+            "location": 2
+        },
+        {
+            "duration": 6,
+            "start": 62,
+            "chars": [
+                0,
+                1,
+                2,
+                4
+            ],
+            "id": 15,
+            "location": 2
+        },
+        {
+            "duration": 7,
+            "start": 68,
+            "chars": [
+                0,
+                1,
+                4
+            ],
+            "id": 16,
+            "location": 2
+        },
+        {
+            "duration": 7,
+            "start": 68,
+            "chars": [
+                2
+            ],
+            "id": 17,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 75,
+            "chars": [
+                0
+            ],
+            "id": 18,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 75,
+            "chars": [
+                1,
+                2,
+                4,
+                5
+            ],
+            "id": 19,
+            "location": 0
+        },
+        {
+            "duration": 14,
+            "start": 82,
+            "chars": [
+                0,
+                4
+            ],
+            "id": 20,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 82,
+            "chars": [
+                1
+            ],
+            "id": 21,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 82,
+            "chars": [
+                2,
+                5
+            ],
+            "id": 22,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 89,
+            "chars": [
+                1,
+                2
+            ],
+            "id": 23,
+            "location": 0
+        },
+        {
+            "duration": 6,
+            "start": 96,
+            "chars": [
+                0,
+                1,
+                2,
+                4
+            ],
+            "id": 24,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 102,
+            "chars": [
+                0,
+                1,
+                2
+            ],
+            "id": 25,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 102,
+            "chars": [
+                4
+            ],
+            "id": 26,
+            "location": 0
+        },
+        {
+            "duration": 82,
+            "start": 109,
+            "chars": [
+                0
+            ],
+            "id": 27,
+            "location": 0
+        },
+        {
+            "duration": 14,
+            "start": 109,
+            "chars": [
+                1,
+                2
+            ],
+            "id": 28,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 116,
+            "chars": [
+                6
+            ],
+            "id": 29,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 123,
+            "chars": [
+                1,
+                6
+            ],
+            "id": 30,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 123,
+            "chars": [
+                2
+            ],
+            "id": 31,
+            "location": 0
+        },
+        {
+            "duration": 6,
+            "start": 130,
+            "chars": [
+                1,
+                2,
+                6
+            ],
+            "id": 32,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 136,
+            "chars": [
+                1,
+                6
+            ],
+            "id": 33,
+            "location": 2
+        },
+        {
+            "duration": 7,
+            "start": 136,
+            "chars": [
+                2
+            ],
+            "id": 34,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 143,
+            "chars": [
+                1,
+                2,
+                6
+            ],
+            "id": 35,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 150,
+            "chars": [
+                1,
+                6
+            ],
+            "id": 36,
+            "location": 2
+        },
+        {
+            "duration": 7,
+            "start": 150,
+            "chars": [
+                2
+            ],
+            "id": 37,
+            "location": 0
+        },
+        {
+            "duration": 6,
+            "start": 157,
+            "chars": [
+                1,
+                2,
+                6
+            ],
+            "id": 38,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 163,
+            "chars": [
+                1,
+                2
+            ],
+            "id": 39,
+            "location": 0
+        },
+        {
+            "duration": 34,
+            "start": 163,
+            "chars": [
+                6
+            ],
+            "id": 40,
+            "location": 0
+        },
+        {
+            "duration": 14,
+            "start": 163,
+            "chars": [
+                7
+            ],
+            "id": 41,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 170,
+            "chars": [
+                1
+            ],
+            "id": 42,
+            "location": 0
+        },
+        {
+            "duration": 27,
+            "start": 170,
+            "chars": [
+                2
+            ],
+            "id": 43,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 177,
+            "chars": [
+                1,
+                7
+            ],
+            "id": 44,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 184,
+            "chars": [
+                1
+            ],
+            "id": 45,
+            "location": 0
+        },
+        {
+            "duration": 20,
+            "start": 184,
+            "chars": [
+                7
+            ],
+            "id": 46,
+            "location": 0
+        },
+        {
+            "duration": 13,
+            "start": 191,
+            "chars": [
+                0,
+                1
+            ],
+            "id": 47,
+            "location": 0
+        },
+        {
+            "duration": 34,
+            "start": 197,
+            "chars": [
+                2,
+                6
+            ],
+            "id": 48,
+            "location": 3
+        },
+        {
+            "duration": 14,
+            "start": 204,
+            "chars": [
+                0,
+                1,
+                7
+            ],
+            "id": 49,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 211,
+            "chars": [
+                8
+            ],
+            "id": 50,
+            "location": 0
+        },
+        {
+            "duration": 13,
+            "start": 218,
+            "chars": [
+                0,
+                1,
+                7,
+                8
+            ],
+            "id": 51,
+            "location": 0
+        },
+        {
+            "duration": 68,
+            "start": 225,
+            "chars": [
+                9
+            ],
+            "id": 52,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 231,
+            "chars": [
+                0,
+                1,
+                2,
+                7,
+                8
+            ],
+            "id": 53,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 231,
+            "chars": [
+                6
+            ],
+            "id": 54,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 238,
+            "chars": [
+                0,
+                2,
+                7,
+                8
+            ],
+            "id": 55,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 238,
+            "chars": [
+                1,
+                6
+            ],
+            "id": 56,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 245,
+            "chars": [
+                0,
+                1,
+                2,
+                6,
+                7,
+                8
+            ],
+            "id": 57,
+            "location": 0
+        },
+        {
+            "duration": 27,
+            "start": 252,
+            "chars": [
+                0,
+                2,
+                7,
+                8
+            ],
+            "id": 58,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 252,
+            "chars": [
+                1,
+                6
+            ],
+            "id": 59,
+            "location": 2
+        },
+        {
+            "duration": 6,
+            "start": 259,
+            "chars": [
+                1
+            ],
+            "id": 60,
+            "location": 2
+        },
+        {
+            "duration": 6,
+            "start": 259,
+            "chars": [
+                3,
+                6
+            ],
+            "id": 61,
+            "location": 2
+        },
+        {
+            "duration": 7,
+            "start": 265,
+            "chars": [
+                1,
+                3,
+                6
+            ],
+            "id": 62,
+            "location": 2
+        },
+        {
+            "duration": 7,
+            "start": 272,
+            "chars": [
+                1,
+                6
+            ],
+            "id": 63,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 279,
+            "chars": [
+                0,
+                1,
+                2,
+                6
+            ],
+            "id": 64,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 279,
+            "chars": [
+                7,
+                8
+            ],
+            "id": 65,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 286,
+            "chars": [
+                0,
+                1,
+                2,
+                6,
+                7,
+                8
+            ],
+            "id": 66,
+            "location": 0
+        },
+        {
+            "duration": 6,
+            "start": 293,
+            "chars": [
+                0,
+                1,
+                2,
+                6,
+                7,
+                8,
+                9
+            ],
+            "id": 67,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 299,
+            "chars": [
+                0,
+                1,
+                2,
+                6,
+                7,
+                8
+            ],
+            "id": 68,
+            "location": 4
+        },
+        {
+            "duration": 7,
+            "start": 299,
+            "chars": [
+                9
+            ],
+            "id": 69,
+            "location": 4
+        },
+        {
+            "duration": 7,
+            "start": 306,
+            "chars": [
+                0,
+                2,
+                7,
+                9
+            ],
+            "id": 70,
+            "location": 4
+        },
+        {
+            "duration": 7,
+            "start": 306,
+            "chars": [
+                1,
+                6,
+                8
+            ],
+            "id": 71,
+            "location": 4
+        },
+        {
+            "duration": 7,
+            "start": 313,
+            "chars": [
+                0,
+                1,
+                2,
+                6,
+                7,
+                8,
+                9
+            ],
+            "id": 72,
+            "location": 4
+        },
+        {
+            "duration": 6,
+            "start": 320,
+            "chars": [
+                0,
+                1,
+                2,
+                6,
+                8
+            ],
+            "id": 73,
+            "location": 4
+        },
+        {
+            "duration": 13,
+            "start": 320,
+            "chars": [
+                7,
+                9
+            ],
+            "id": 74,
+            "location": 4
+        },
+        {
+            "duration": 7,
+            "start": 326,
+            "chars": [
+                0,
+                2,
+                8
+            ],
+            "id": 75,
+            "location": 4
+        },
+        {
+            "duration": 7,
+            "start": 326,
+            "chars": [
+                1,
+                6
+            ],
+            "id": 76,
+            "location": 4
+        },
+        {
+            "duration": 7,
+            "start": 333,
+            "chars": [
+                0,
+                1,
+                2,
+                6,
+                7,
+                8,
+                9
+            ],
+            "id": 77,
+            "location": 4
+        },
+        {
+            "duration": 7,
+            "start": 340,
+            "chars": [
+                0
+            ],
+            "id": 78,
+            "location": 5
+        },
+        {
+            "duration": 7,
+            "start": 340,
+            "chars": [
+                1,
+                7,
+                9
+            ],
+            "id": 79,
+            "location": 5
+        },
+        {
+            "duration": 14,
+            "start": 340,
+            "chars": [
+                2,
+                6
+            ],
+            "id": 80,
+            "location": 5
+        },
+        {
+            "duration": 122,
+            "start": 340,
+            "chars": [
+                8
+            ],
+            "id": 81,
+            "location": 4
+        },
+        {
+            "duration": 13,
+            "start": 347,
+            "chars": [
+                0,
+                7
+            ],
+            "id": 82,
+            "location": 5
+        },
+        {
+            "duration": 7,
+            "start": 347,
+            "chars": [
+                1,
+                9
+            ],
+            "id": 83,
+            "location": 5
+        },
+        {
+            "duration": 6,
+            "start": 354,
+            "chars": [
+                1,
+                2,
+                6,
+                9
+            ],
+            "id": 84,
+            "location": 5
+        },
+        {
+            "duration": 7,
+            "start": 360,
+            "chars": [
+                0,
+                1,
+                2,
+                6,
+                7,
+                9
+            ],
+            "id": 85,
+            "location": 5
+        },
+        {
+            "duration": 7,
+            "start": 367,
+            "chars": [
+                0,
+                1,
+                6,
+                7,
+                9
+            ],
+            "id": 86,
+            "location": 6
+        },
+        {
+            "duration": 89,
+            "start": 367,
+            "chars": [
+                2
+            ],
+            "id": 87,
+            "location": 5
+        },
+        {
+            "duration": 7,
+            "start": 374,
+            "chars": [
+                0,
+                7,
+                9
+            ],
+            "id": 88,
+            "location": 6
+        },
+        {
+            "duration": 27,
+            "start": 374,
+            "chars": [
+                1,
+                6
+            ],
+            "id": 89,
+            "location": 6
+        },
+        {
+            "duration": 13,
+            "start": 381,
+            "chars": [
+                0,
+                9
+            ],
+            "id": 90,
+            "location": 6
+        },
+        {
+            "duration": 27,
+            "start": 381,
+            "chars": [
+                7
+            ],
+            "id": 91,
+            "location": 6
+        },
+        {
+            "duration": 7,
+            "start": 394,
+            "chars": [
+                0,
+                3,
+                9
+            ],
+            "id": 92,
+            "location": 6
+        },
+        {
+            "duration": 7,
+            "start": 401,
+            "chars": [
+                0,
+                1,
+                6,
+                9
+            ],
+            "id": 93,
+            "location": 6
+        },
+        {
+            "duration": 7,
+            "start": 408,
+            "chars": [
+                0,
+                1,
+                6,
+                7,
+                9
+            ],
+            "id": 94,
+            "location": 6
+        },
+        {
+            "duration": 20,
+            "start": 415,
+            "chars": [
+                0,
+                7
+            ],
+            "id": 95,
+            "location": 6
+        },
+        {
+            "duration": 7,
+            "start": 415,
+            "chars": [
+                1,
+                6
+            ],
+            "id": 96,
+            "location": 7
+        },
+        {
+            "duration": 13,
+            "start": 415,
+            "chars": [
+                9
+            ],
+            "id": 97,
+            "location": 7
+        },
+        {
+            "duration": 6,
+            "start": 422,
+            "chars": [
+                1,
+                3,
+                6
+            ],
+            "id": 98,
+            "location": 7
+        },
+        {
+            "duration": 14,
+            "start": 428,
+            "chars": [
+                1,
+                3,
+                6,
+                9
+            ],
+            "id": 99,
+            "location": 7
+        },
+        {
+            "duration": 41,
+            "start": 435,
+            "chars": [
+                0
+            ],
+            "id": 100,
+            "location": 7
+        },
+        {
+            "duration": 7,
+            "start": 435,
+            "chars": [
+                7
+            ],
+            "id": 101,
+            "location": 6
+        },
+        {
+            "duration": 7,
+            "start": 442,
+            "chars": [
+                1,
+                3,
+                6
+            ],
+            "id": 102,
+            "location": 7
+        },
+        {
+            "duration": 7,
+            "start": 442,
+            "chars": [
+                7,
+                9
+            ],
+            "id": 103,
+            "location": 6
+        },
+        {
+            "duration": 20,
+            "start": 449,
+            "chars": [
+                1,
+                3
+            ],
+            "id": 104,
+            "location": 7
+        },
+        {
+            "duration": 7,
+            "start": 449,
+            "chars": [
+                6,
+                7,
+                9
+            ],
+            "id": 105,
+            "location": 6
+        },
+        {
+            "duration": 6,
+            "start": 456,
+            "chars": [
+                2,
+                6,
+                7,
+                9
+            ],
+            "id": 106,
+            "location": 5
+        },
+        {
+            "duration": 7,
+            "start": 462,
+            "chars": [
+                2,
+                6,
+                7,
+                8,
+                9
+            ],
+            "id": 107,
+            "location": 4
+        },
+        {
+            "duration": 7,
+            "start": 469,
+            "chars": [
+                1
+            ],
+            "id": 108,
+            "location": 7
+        },
+        {
+            "duration": 7,
+            "start": 469,
+            "chars": [
+                2,
+                6,
+                8
+            ],
+            "id": 109,
+            "location": 4
+        },
+        {
+            "duration": 14,
+            "start": 469,
+            "chars": [
+                7,
+                9
+            ],
+            "id": 110,
+            "location": 4
+        },
+        {
+            "duration": 7,
+            "start": 476,
+            "chars": [
+                0,
+                1
+            ],
+            "id": 111,
+            "location": 7
+        },
+        {
+            "duration": 7,
+            "start": 476,
+            "chars": [
+                2,
+                6
+            ],
+            "id": 112,
+            "location": 4
+        },
+        {
+            "duration": 7,
+            "start": 476,
+            "chars": [
+                8
+            ],
+            "id": 113,
+            "location": 4
+        },
+        {
+            "duration": 7,
+            "start": 483,
+            "chars": [
+                0,
+                1,
+                2,
+                6,
+                7,
+                8
+            ],
+            "id": 114,
+            "location": 0
+        },
+        {
+            "duration": 7,
+            "start": 483,
+            "chars": [
+                9
+            ],
+            "id": 115,
+            "location": 0
+        }
+    ]
+}

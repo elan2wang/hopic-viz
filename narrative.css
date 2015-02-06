@@ -78,14 +78,14 @@ blockquote:after {
 }
 */
 
-.scene {
+.session {
   cursor: move;
   fill-opacity: .15;
   color: #787878;
   shape-rendering: auto;
 }
 
-.scene:hover {
+.session:hover {
   fill-opacity: 0.6;
   color: #FFFF00;
 }
