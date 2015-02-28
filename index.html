@@ -1,23 +1,34 @@
 <html>
-	<head>
-		<style>
-			@import url('narrative.css');
-		</style>
-		<script src="./lib/viz.js" charset="utf-8"></script>
+    <head>
+        <style>
+            @import url('narrative.css');
+        </style>
+        <script src="./lib/viz.js" charset="utf-8"></script>
         <script src="./lib/d3.min.js" charset="utf-8"></script>
         <script src="./lib/graphlib-dot.min.js" charset="utf-8"></script>
         <script src="json2dot.js" charset="utf-8"></script>
+        <script src="statistic.js" charset="utf-8"></script>
         <script src="narrative.js" charset="utf-8"></script>
-	</head>
-	<body>
-		<form>
-			<label for="inputGraph">Graphviz Definition</label>
-            <input type="text" id="inputfile" placeholder="请输入json文件名称" />
-            <input type="text" id="panelwidth" placeholder="请输入panel宽度" />
-			<input type="button" id="graphLink" onclick="draw_chart('./data/')" value="generate"/>
-		</form>
+        <script src="alignment.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <form>
+            <p>Graph Definition</p>
 
-		<p id="chart"></p>
+            <p>
+            <label>filename:</label><input type="text" id="inputfile" placeholder="json_file" value="inception" />
+            <label>panel width:</label><input type="text" id="panelwidth" placeholder="panel_width" value="2" />
+            <label>link gap:</label><input type="text" id="linkgap" placeholder="link_gap" value="8" />
+            <label>link width:</label><input type="text" id="linkwidth" placeholder="link_width" value="1.25" />
+            <label>session gap:</label><input type="text" id="sessionsep" placeholder="session_sep" value="3" /></p>
 
-	</body>
+            <p><input type="button" id="graphLink" onclick="draw_chart('./data/')" value="generate"/>
+            <input type="button" id="graphLink" onclick="draw_sessions(svg, storyline)" value="draw_session"/>
+            <input type="button" id="graphLink" onclick="clear_sessions(svg, storyline)" value="clear_session"/>
+            <input type="button" id="graphLink" onclick="alignment(storyline)" value="alignment"/></p>
+        </form>
+
+        <p id="chart"></p>
+
+    </body>
 </html>

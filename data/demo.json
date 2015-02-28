@@ -1,0 +1,54 @@
+{
+    "panels": 20,
+    "characters": [
+        {
+            "id": 0,
+            "name": "SAITO"
+        },
+        {
+            "id": 2,
+            "name": "ARTHUR"
+        },
+        {
+            "id": 3,
+            "name": "MAL"
+        },
+        {
+            "id": 1,
+            "name": "COBB"
+        }
+    ],
+    "sessions": [
+        {
+            "duration": 3,
+            "start": 3,
+            "chars": [
+                0,
+                1,
+                2
+            ],
+            "id": 0,
+            "location": 1
+        },
+        {
+            "duration": 5,
+            "start": 8,
+            "chars": [
+                0,
+                3
+            ],
+            "id": 1,
+            "location": 1
+        },
+        {
+            "duration": 5,
+            "start": 15,
+            "chars": [
+                1,
+                2
+            ],
+            "id": 2,
+            "location": 1
+        }
+    ]
+}

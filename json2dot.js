@@ -31,7 +31,7 @@ function json2dot(jsessions) {
     char_sessions.forEach(function(key, value) {
         characterStr += "\"" + key + "\";";
         linkStr += "\t{\n";
-        linkStr += "\t\tedge[color=" + colors[cindex++%12] + ", arrowhead=none];\n"
+        linkStr += "\t\tedge[color=" + colors[cindex++%12] + "];\n"
         linkStr += "\t\t\"" + key + "\" -> \"";
         
         value.forEach(function(val, index, array){
@@ -57,7 +57,7 @@ function json2dot(jsessions) {
     dotStr += "\t}\n\n";
 
     dotStr += "\t{\n";
-    dotStr += "\t\tnode[shape=plaintext,fontsize=11,height=0.2,width=0.5];\n";
+    dotStr += "\t\tnode[shape=box,fontsize=11,height=0.2,width=0.5];\n";
     dotStr += "\t\t" + sessionStr + "\n";
     dotStr += "\t}\n\n";
 
