@@ -18,17 +18,18 @@
             <p>
             <label>filename:</label><input type="text" id="inputfile" placeholder="json_file" value="inception" />
             <label>panel width:</label><input type="text" id="panelwidth" placeholder="panel_width" value="2" />
-            <label>link gap:</label><input type="text" id="linkgap" placeholder="link_gap" value="8" />
-            <label>link width:</label><input type="text" id="linkwidth" placeholder="link_width" value="1.25" />
-            <label>session gap:</label><input type="text" id="sessionsep" placeholder="session_sep" value="3" /></p>
+            <label>link gap:</label><input type="text" id="linkgap" placeholder="link_gap" value="4" />
+            <label>link width:</label><input type="text" id="linkwidth" placeholder="link_width" value="2" />
+            <label>session gap:</label><input type="text" id="sessionsep" placeholder="session_sep" value="0" /></p>
 
             <p><input type="button" id="graphLink" onclick="draw_chart('./data/')" value="generate"/>
             <input type="button" id="graphLink" onclick="draw_sessions(svg, storyline)" value="draw_session"/>
             <input type="button" id="graphLink" onclick="clear_sessions(svg, storyline)" value="clear_session"/>
             <input type="button" id="graphLink" onclick="alignment(storyline)" value="alignment"/></p>
+
+            <p id="characters"></p>
         </form>
 
         <p id="chart"></p>
-
     </body>
 </html>

@@ -52,6 +52,7 @@ function _Session(id, chars, start, duration) {
     this.inner_links = [];           // [array[_Link]]
 
     this.type        = "session";    // [string]
+    this.char_id     = -1;           // [int] 如果 type=startpoint 或 type=endpoint
 
     // methods
     this.has_char = function(id) {
@@ -159,8 +160,10 @@ function _Storyline(jsessions, jchars, raw_chart_width, raw_chart_height) {
             // 为角色创建起点和终点，以及连接它们的线段
             chars[i].start = new _Session(sessionCount++, [chars[i].id], -1, 1);
             chars[i].end   = new _Session(sessionCount++, [chars[i].id], -1, 1);
-            chars[i].start.type = "startpoint";
-            chars[i].end.type   = "endpoint";
+            chars[i].start.type    = "startpoint";
+            chars[i].start.char_id = chars[i].id;
+            chars[i].end.type      = "endpoint";
+            chars[i].end.char_id   = chars[i].id;
             endpoints[endpoints.length] = chars[i].start;
             endpoints[endpoints.length] = chars[i].end;
 
@@ -204,7 +207,7 @@ function _Storyline(jsessions, jchars, raw_chart_width, raw_chart_height) {
 // of the chart. Can calculate but this works okay.
 var color = d3.scale.category10();
 var raw_chart_width  = 2000;
-var raw_chart_height = 500;
+var raw_chart_height = 1000;
 var storyline = null;
 var svg = null;
 
@@ -252,7 +255,7 @@ function calc_session_positions (storyline, jsessions) {
             // set x & y
             var xy = sessionPos.get(session.id);
             session.x = storyline.panel_width*6 + storyline.panel_width*session.start + storyline.session_sep*index;
-            session.y = parseFloat(xy[1]);
+            session.y = parseInt(xy[1]);
             index++;
         }
     });
@@ -394,6 +397,8 @@ function draw_sessions (svg, storyline) {
         .attr("class", "session")
         .attr("transform", function(d) { return "translate(" + (d.x) + "," + (d.y) + ")"; })
         .attr("session_id", function(d) { return d.id; })
+        // .on("mouseover", mouseover)
+        // .on("mouseout", mouseout)
     .call(d3.behavior.drag()
         .origin(function(d) { return d; })
         .on("dragstart", function() { this.parentNode.appendChild(this); })
@@ -408,6 +413,55 @@ function draw_sessions (svg, storyline) {
     .append("title")
         .text(function(d) { return d.name; });
 
+
+    function mouseover (d) {
+        var im = new Image();
+        
+        im.src = "./image/popup.png";
+        im.onload = function(e) {
+            var w = this.width;
+            var h = this.height;
+            var x = d.x + d.width;
+            var y = d.y + d.height;
+            // if (h > storyline.chart_height-y) {
+            // var max_h = Math.max(y, storyline.chart_height-y);
+            // if (h > max_h) {
+            //     var ratio = max_h/h;
+            //     h *= ratio;
+            //     w *= ratio;
+            // }
+            // if (max_h == y) {
+            //     y -= h + d.height;
+            // }
+            // }
+            // if (w > storyline.chart_width-x) {
+            //     var max_w = Math.max(x, storyline.chart_width-x); 
+            //     if (w > max_w) {
+            //         var ratio = max_w/w;
+            //         h *= ratio;
+            //         w *= ratio;
+            //     }
+            //     if (max_w == x) {
+            //         x -= w + d.width;
+            //     }
+            // }
+            svg.append("image")
+                .data([this])
+                    .attr("x", x)
+                    .attr("y", y)
+                .attr("xlink:href", this.src)
+                    .attr("transform", null)
+                        .style("position", "relative")
+                .attr("id", this.id)
+                    .attr("class", "session_context")
+                .attr("width", w)
+                .attr("height", h);
+        }
+    }
+
+    function mouseout (d) {
+        d3.selectAll("[class=\"session_context\"]").remove();
+    }
 
     function dragmove (d) {
         var newy = Math.max(0, Math.min(storyline.chart_height - d.height, d3.event.y));
@@ -445,7 +499,6 @@ function draw_endpoints (svg, storyline) {
     .append("g")
         .attr("class", "node")
         .attr("transform", function(d) { return "translate(" + (d.x) + "," + (d.y) + ")"; })
-        .attr("session_id", function(d) { return d.id; })
     .call(d3.behavior.drag()
         .origin(function(d) { return d; })
         .on("dragstart", function() { this.parentNode.appendChild(this); })
@@ -455,6 +508,7 @@ function draw_endpoints (svg, storyline) {
     endpoints
     .append('circle')
         .attr('r', storyline.link_width)
+        .attr("charid", function(d) { return d.char_id; })
         .style('fill', '#000')
     .append("title")
         .text(function(d) { return d.name; });
@@ -481,6 +535,10 @@ function draw_endpoints (svg, storyline) {
             d.y0 -= ydisp;
         }).attr("d", function(d) { return get_path(d, panel_width); });
     };
+}
+
+function hide_character (svg, char_id) {
+    svg.selectAll("[charid='" + char_id + "']").remove();
 }
 
 function redraw () {
@@ -520,12 +578,20 @@ function draw_chart (filepath) {
         var jchars = data["characters"];
 
         storyline = new _Storyline(jsessions, jchars, raw_chart_width, raw_chart_height);
-        if (panelwidth != "") storyline.link_width  = parseFloat(linkwidth);
-        if (linkgap    != "") storyline.link_gap    = parseFloat(linkgap);
-        if (panelwidth != "") storyline.panel_width = parseFloat(panelwidth);
-        if (sessionsep != "") storyline.session_sep = parseFloat(sessionsep);
-
+        if (panelwidth != "") storyline.link_width  = parseInt(linkwidth);
+        if (linkgap    != "") storyline.link_gap    = parseInt(linkgap);
+        if (panelwidth != "") storyline.panel_width = parseInt(panelwidth);
+        if (sessionsep != "") storyline.session_sep = parseInt(sessionsep);
         storyline.initialize();
+
+        characters_chooser = "";
+        for (var i=0; i<storyline.chars.length; i++) {
+            characters_chooser += "<input type='checkbox' onclick='hide_character(svg, " + storyline.chars[i].id + ")' value='" + storyline.chars[i].id + 
+                                  "' checked='true' /><span style='color:" + d3.rgb(color(storyline.chars[i].id)).darker(0.5).toString() + 
+                                  "'>" + storyline.chars[i].name + "</span>";
+        }
+        d3.select("#characters").html(characters_chooser);
+
 
         d3.select("#chart").html("");
         svg = d3.select("#chart").append("svg")
