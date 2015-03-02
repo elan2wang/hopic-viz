@@ -345,7 +345,7 @@ function calc_link_positions_of_session (storyline, session) {
 
 function calc_positions_of_endpoints (storyline) {
     storyline.chars.forEach(function (character) {
-        character.start.x = character.start.out_links[0].x1 - storyline.panel_width*5;
+        character.start.x = character.start.out_links[0].x1 - storyline.link_width*2;
         character.start.y = character.start.out_links[0].y1;
         character.width   = storyline.link_width;
         character.height  = storyline.link_width;
@@ -353,7 +353,7 @@ function calc_positions_of_endpoints (storyline) {
         character.start.out_links[0].x0 = character.start.x;
         character.start.out_links[0].y0 = character.start.out_links[0].y1;
         
-        character.end.x = character.end.in_links[0].x0 + storyline.panel_width*5;
+        character.end.x = character.end.in_links[0].x0 + storyline.link_width*2;
         character.end.y = character.end.in_links[0].y0;
         character.end.in_links[0].x1 = character.end.x;
         character.end.in_links[0].y1 = character.end.in_links[0].y0;
